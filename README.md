@@ -1,43 +1,27 @@
-# Astro Starter Kit: Minimal
+# API
 
-```sh
-npm create astro@latest -- --template minimal
-```
+### Dag 1 — Woensdag 1 april
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+**Wat heb ik gedaan?**
+Als eerst zijn we aan de slag gegaan met de introductie over astro en de API. We moesten een paar web API's vinden en content API's met het groepje. De API's zijn gevonden en zo begon ik met mijn eerste idee. We hebben ook een workshop gehad over hoe je astro moet gebruiken. Wel begrijpelijk maar nog een klein beetje ingewikkeld. Vandaag ben ik gelijk aan de slag gegaan met mijn concept. Het concept word eigenlijk een soort swipe cleaner. De struggle op spotify is dat je alles handmatig je playlist uit moet verwijderen als je een nummer er niet meer in wil hebben. Mijn idee is eigenlijk dat een gebruiker op deze website zijn playlist kan kiezen en dan een soort spelletje speelt om van links naar rechts te gaan met je muis of je duim. Links je verwijderd het nummer uit je playlist, rechts je behoudt het nummer in de playlist. De bedoeling is ook dat hij dan ook de track even kort afspeeld. Dat is tot nu toe voor het concept dat ik heb uitgewerkt
 
-## 🚀 Project Structure
+Om de spotify te gebruiken moet je een profiel hebben en je aanmelden om een app te createn. Daarbij kreeg ik allemaal informatie dat ik nodig had. Ook namelijk de code die ik moet gebruiken om de user op te halen. Er staat dus al code in mn JS. Maar dat is puur om de user op te halen uit spotify om zo alle data te krijgen.
 
-Inside of your Astro project, you'll see the following folders and files:
+**Hoe lang duurde het?**
+Ik ben hier de hele dag mee bezig geweest
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+**Wat heb ik geleerd?**
+Vandaag heb ik geleerd hoe astro werkt en een opfrissing van fetch. Ook om data uit de api terug te zetten in de html. Dat wist ik al maar ging vandaag makkelijker
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+**Wat ga ik morgen doen?**
+Morgen zijn er voorgang gesprekken ivm goedevrijdag. Dus ik ga morgen mijn concept presenteren. Heb nu geen visualisatie dus ik ga even iets korts schetsen. Ook ga ik nog even nadenken over welke meerdere API's ik wil gebruiken. De week er na wil ik er voor zorgen dat de local storage werkt want ik vind het nu nog iets lastig om te begrijpen. En om de playlist op te halen.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Dag 2 — donderdag 2 april
 
-Any static assets, like images, can be placed in the `public/` directory.
+**Wat heb ik gedaan?**
 
-## 🧞 Commands
+**Hoe lang duurde het?**
 
-All commands are run from the root of the project, from a terminal:
+**Wat heb ik geleerd?**
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+**Wat ga ik volgendeweek doen?**
