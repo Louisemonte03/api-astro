@@ -95,7 +95,3 @@ function populateUI(profile) {
   document.getElementById("imgUrl").src = profile.images[0].url;
   console.log(profile);
 }
-
-// code van Jad voor de playlist
-
-//   code van jad voor de local storage

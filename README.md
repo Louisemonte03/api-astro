@@ -1,5 +1,7 @@
 # API
 
+## week 1
+
 ### Dag 1 — Woensdag 1 april
 
 **Wat heb ik gedaan?**
@@ -16,12 +18,84 @@ Vandaag heb ik geleerd hoe astro werkt en een opfrissing van fetch. Ook om data 
 **Wat ga ik morgen doen?**
 Morgen zijn er voorgang gesprekken ivm goedevrijdag. Dus ik ga morgen mijn concept presenteren. Heb nu geen visualisatie dus ik ga even iets korts schetsen. Ook ga ik nog even nadenken over welke meerdere API's ik wil gebruiken. De week er na wil ik er voor zorgen dat de local storage werkt want ik vind het nu nog iets lastig om te begrijpen. En om de playlist op te halen.
 
-### Dag 2 — donderdag 2 april
+### Dag 2 — Donderdag 3 april
 
 **Wat heb ik gedaan?**
+Vandaag waren er voortgangsgesprekken. In het gesprek met Jad kwam naar voren dat ik me moet focussen op **local storage**. Hij gaat hier ook een workshop over geven, dus dat komt goed uit. Qua web API heb ik nog geen definitieve keuze gemaakt — ik denk aan de Popover API, de Local Storage API of misschien de Canvas API. Ik moet nog uitzoeken welke het beste bij mijn concept past.
+
+Na het voortgangsgesprek ben ik verder gegaan met het ophalen van tracks uit een playlist. Dat bleek lastiger dan verwacht — ik heb er de rest van de middag aan gewerkt maar het lukte uiteindelijk niet. De Spotify API geeft de data terug op een manier die ik nog niet helemaal goed verwerk in mijn code. Dat neem ik mee naar volgende week.
 
 **Hoe lang duurde het?**
+Ochtend voortgangsgesprekken, de rest van de dag verder gewerkt aan de track-functionaliteit.
 
 **Wat heb ik geleerd?**
+Dat local storage een belangrijk onderdeel wordt van mijn project en dat ik daar prioriteit aan moet geven. Ook merkte ik dat het ophalen van geneste data uit een API (zoals tracks binnen een playlist) complexer is dan een simpele fetch.
 
-**Wat ga ik volgendeweek doen?**
+**Wat ga ik volgende week doen?**
+Volgende week wil ik de workshop van Jad over local storage meepakken en direct toepassen op mijn project. Ik ga ook verder proberen de tracks uit een playlist op te halen — dat moet echt gaan werken voor ik verder kan met het swipe-mechanisme.
+
+## Weekreflectie — Week 1
+
+Deze eerste week was vooral een week van opstarten en ontdekken. Ik ben begonnen met een concept dat ik gaaf vind: een swipe-interface waarmee je snel nummers uit je Spotify-playlist kunt verwijderen of behouden. Dat idee staat, en dat voelt goed.
+
+Wat ik heb gemerkt is dat de technische kant meer tijd kost dan ik dacht. Astro was nieuw voor me en hoewel de workshop hielp, kost het gewoon tijd om ermee vertrouwd te raken. De Spotify API werkt op zich, maar zodra je dieper gaat — zoals tracks ophalen uit een specifieke playlist — loop je tegen dingen aan die je eerst goed moet begrijpen.
+
+Het voortgangsgesprek met Jad was waardevol. Het gaf me focus: local storage is de volgende stap, en ik moet nog een tweede web API kiezen die echt iets toevoegt aan mijn concept. Dat vind ik nog spannend — ik wil niet zomaar iets kiezen, maar iets dat logisch aansluit.
+
+Wat ik meeneem naar volgende week: meer structuur aanbrengen in wat ik wil bereiken per dag, en niet te lang vastlopen op één probleem zonder hulp te vragen.
+
+## week 2
+
+### Dag 3 — Woensdag 0 april
+
+**Wat heb ik gedaan?**
+**Hoe lang duurde het?**
+**Wat heb ik geleerd?**
+**Wat ga ik morgen doen?**
+
+### Dag 4 — Donderdag 0 april
+
+**Wat heb ik gedaan?**
+**Hoe lang duurde het?**
+**Wat heb ik geleerd?**
+**Wat ga ik volgende week doen?**
+
+## Weekreflectie — Week 3
+
+## week 2
+
+### Dag 5 — Woensdag 0 april
+
+**Wat heb ik gedaan?**
+**Hoe lang duurde het?**
+**Wat heb ik geleerd?**
+**Wat ga ik morgen doen?**
+
+### Dag 6 — Donderdag 0 april
+
+**Wat heb ik gedaan?**
+**Hoe lang duurde het?**
+**Wat heb ik geleerd?**
+**Wat ga ik volgende week doen?**
+
+## Weekreflectie — Week 3
+
+## Weekreflectie — Week 3
+
+## week 4
+
+### Dag 7 — Woensdag 0 april
+
+**Wat heb ik gedaan?**
+**Hoe lang duurde het?**
+**Wat heb ik geleerd?**
+**Wat ga ik morgen doen?**
+
+### Dag 8 — Donderdag 0 april
+
+**Wat heb ik gedaan?**
+**Hoe lang duurde het?**
+**Wat heb ik geleerd?**
+**Wat ga ik volgende week doen?**
+
+## Weekreflectie — Week 4
