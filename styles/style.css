@@ -1,0 +1,105 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  color: var(--color-text-primary);
+  padding: 20px;
+}
+ul {
+  display: flex;
+  gap: 1em;
+  list-style-type: none;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(29, 185, 84, 0.08);
+  border: 0.5px solid rgba(29, 185, 84, 0.25);
+  border-radius: 12px;
+  padding: 10px 14px;
+  backdrop-filter: blur(12px);
+  width: fit-content;
+  margin: 0 0 0 20px;
+}
+
+.profile img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile div p:first-child {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.profile div p:last-child {
+  margin: 0;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+.playlists {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.playlist-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.playlist-card:hover {
+  transform: scale(1.03);
+  border-color: var(--color-accent-hover);
+}
+
+.playlist-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  transition: transform 0.15s ease;
+}
+
+.card-tracks {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* responsive maken van de playlisten */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .playlists {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+  }
+
+  .profile {
+    margin: 0;
+  }
+}

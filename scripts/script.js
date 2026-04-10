@@ -1,29 +1,53 @@
 /* MARK: inlog documenta
  */
 
-// code van spotify documentatie
+// const { xid } = require("astro:schema");
 
 const clientId = "5ee2c5425e034edbb2bc28779cc82aee";
 const redirectUri = "http://127.0.0.1:4321/callback";
 
-const params = new URLSearchParams(window.location.search);
-const code = params.get("code");
+export const initSpotifyAuthentication = async () => {
+  const code = getSearchParams("code");
+  let accessToken = localStorage.getItem("accessToken");
+  console.log({ accessToken });
 
-console.log(code);
+  if (!code) {
+    redirectToAuthCodeFlow(clientId);
+  } else {
+    if (!accessToken) {
+      accessToken = await getAccessToken(clientId, code);
+      localStorage.setItem("accessToken", accessToken);
+    }
+    const profile = await fetchPersonalData(accessToken, "");
+    populateUI(profile);
+    const playlists = await fetchPersonalData(accessToken, "/playlists");
+    populatePlaylists(playlists);
+    // console.log(playlists);
+  }
+};
 
-if (!code) {
-  redirectToAuthCodeFlow(clientId);
-} else {
-  const accessToken = await getAccessToken(clientId, code);
-  console.log(accessToken);
-  //....
-  const profile = await fetchProfile(accessToken);
-  populateUI(profile);
-  console.log(profile);
-}
+const generateCodeVerifier = (length) => {
+  let text = "";
+  let possible =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  for (let i = 0; i < length; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
+};
 
-async function redirectToAuthCodeFlow(clientId) {
+const generateCodeChallenge = async (codeVerifier) => {
+  const data = new TextEncoder().encode(codeVerifier);
+  const digest = await window.crypto.subtle.digest("SHA-256", data);
+  return btoa(String.fromCharCode.apply(null, [...new Uint8Array(digest)]))
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "");
+};
+
+const redirectToAuthCodeFlow = async (clientId) => {
   const verifier = generateCodeVerifier(128);
+
   const challenge = await generateCodeChallenge(verifier);
   localStorage.setItem("verifier", verifier);
 
@@ -39,29 +63,11 @@ async function redirectToAuthCodeFlow(clientId) {
   params.append("code_challenge", challenge);
 
   window.location = `https://accounts.spotify.com/authorize?${params.toString()}`;
-}
-
-function generateCodeVerifier(length) {
-  let text = "";
-  let possible =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  for (let i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return text;
-}
-
-async function generateCodeChallenge(codeVerifier) {
-  const data = new TextEncoder().encode(codeVerifier);
-  const digest = await window.crypto.subtle.digest("SHA-256", data);
-  return btoa(String.fromCharCode.apply(null, [...new Uint8Array(digest)]))
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_")
-    .replace(/=+$/, "");
-}
+};
 
 async function getAccessToken(clientId, code) {
   const verifier = localStorage.getItem("verifier");
+  console.log("verifier", verifier);
 
   const params = new URLSearchParams();
   params.append("client_id", clientId);
@@ -77,21 +83,43 @@ async function getAccessToken(clientId, code) {
   });
 
   const { access_token } = await result.json();
+
   return access_token;
 }
 
-async function fetchProfile(token) {
-  const result = await fetch("https://api.spotify.com/v1/me", {
+const getSearchParams = (param) => {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(param);
+};
+
+async function fetchPersonalData(token, path) {
+  const result = await fetch("https://api.spotify.com/v1/me" + path, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return await result.json();
 }
 
 function populateUI(profile) {
-  document.getElementById("profile").style.display = "block";
   document.getElementById("displayName").innerText = profile.display_name;
   document.getElementById("email").innerText = profile.email;
-  document.getElementById("id").innerText = profile.id;
-  document.getElementById("imgUrl").src = profile.images[0].url;
-  console.log(profile);
+  document.getElementById("imgUrl").src = profile.images[0]?.url;
+}
+
+// voor playlisten
+
+function populatePlaylists(playlists) {
+  const section = document.getElementById("playlists");
+  const template = document.getElementById("playlist-template");
+
+  playlists.items.forEach((playlist) => {
+    const card = template.cloneNode(true);
+    card.removeAttribute("id");
+    card.style.display = "";
+    card.querySelector("img").src = playlist.images[0]?.url ?? "";
+    card.querySelector("img").alt = playlist.name;
+    card.querySelector(".card-name").innerText = playlist.name;
+    card.querySelector(".card-tracks").innerText =
+      `${playlist.items.total} nummers`;
+    section.appendChild(card);
+  });
 }

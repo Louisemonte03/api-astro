@@ -38,31 +38,45 @@ Volgende week wil ik de workshop van Jad over local storage meepakken en direct 
 
 Deze eerste week was vooral een week van opstarten en ontdekken. Ik ben begonnen met een concept dat ik gaaf vind: een swipe-interface waarmee je snel nummers uit je Spotify-playlist kunt verwijderen of behouden. Dat idee staat, en dat voelt goed.
 
-Wat ik heb gemerkt is dat de technische kant meer tijd kost dan ik dacht. Astro was nieuw voor me en hoewel de workshop hielp, kost het gewoon tijd om ermee vertrouwd te raken. De Spotify API werkt op zich, maar zodra je dieper gaat — zoals tracks ophalen uit een specifieke playlist — loop je tegen dingen aan die je eerst goed moet begrijpen.
+Wat ik heb gemerkt is dat de technische kant meer tijd kost dan ik dacht. Astro was nieuw voor me en hoewel de workshop hielp, kost het gewoon tijd om ermee vertrouwd te raken. De Spotify API werkt op zich, maar zodra je dieper gaat zoals tracks ophalen uit een playlist
 
-Het voortgangsgesprek met Jad was waardevol. Het gaf me focus: local storage is de volgende stap, en ik moet nog een tweede web API kiezen die echt iets toevoegt aan mijn concept. Dat vind ik nog spannend — ik wil niet zomaar iets kiezen, maar iets dat logisch aansluit.
+Het voortgangsgesprek met Jad was waardevol. Het gaf me focus: local storage is de volgende stap, en ik moet nog een tweede web API kiezen die echt iets toevoegt aan mijn concept. Moet uiteindelijk wel logish aansluiten
 
 Wat ik meeneem naar volgende week: meer structuur aanbrengen in wat ik wil bereiken per dag, en niet te lang vastlopen op één probleem zonder hulp te vragen.
 
 ## week 2
 
-### Dag 3 — Woensdag 0 april
+### Dag 3 — Woensdag 8 april
 
 **Wat heb ik gedaan?**
+Vandaag hadden we een Astro-workshop. Die was goed te volgen en te begrijpen.
+
 **Hoe lang duurde het?**
+Van 9:30 tot 12:00. Daarna crashte mijn code — ik kon de user en de bijbehorende playlists nog ophalen, maar verder werkte niets meer. Met Cyd heb ik mijn JavaScript opgeschoond en kreeg ik de Spotify-code beter onder de knie. Aan het eind van de dag was ik niet veel verder gekomen qua functionaliteit, maar ik heb wel een veel beter begrip van hoe alles in elkaar zit.
+
 **Wat heb ik geleerd?**
+Hoe Astro werkt — dat moet ik nu alleen nog toepassen op mijn eigen project.
+
 **Wat ga ik morgen doen?**
+Ik wil morgen in ieder geval de rest van de data uit de API kunnen ophalen. Daarvoor ga ik met Jad en Cyd zitten.
 
-### Dag 4 — Donderdag 0 april
+### Dag 4 — Donderdag 9 april
 
 **Wat heb ik gedaan?**
+![alt tekst](/readme-images/stijling-tracks.png) Vandaag ben ik aan de slag gegaan met de tracks op te halen van de gebruiker. Ik kwam er vandaag achter dat spotify elk uur een nieuwe accestoken geeft dus ik moet elke keer LocalStorage.clear doen. Vandaag heet Jad een workshop over local storage geven en begon dat beter te gebruiken. ook heb ik de astro templates toegevoegd. Zo heb ik componenten en layouts aangemaakt en heb ik de style sheets gekoppeld. Ook ben ik vandaag bezig geweest met de styling van de pagina, heel simpel groen.
+![alt tekst](/readme-images/opzetje.png)
 **Hoe lang duurde het?**
+Duurde de hele dag. Klein workshopje van half uurtje. Rest van de dag bezig geweest en om hulp gevraagd bij Jad en Cyd
 **Wat heb ik geleerd?**
+Wat ik vandaag heb geleerd zijn veel local storage. En hoe we de tracks ophalen.
 **Wat ga ik volgende week doen?**
+Voor volgende week wil ik de tracks ophalen. En die gaan gebruiken om de swipe functie te bouwen.
 
 ## Weekreflectie — Week 3
 
-## week 2
+Deze week was best raar want woesndag had ik eigenlijk het idee dat ik niet veel heb gedaan omdat mijn code niet werkte elke keer. Dat heb ik op donderdag weten te fixen. Zo kon ik naar de styling en het gebruiken van de astro structuur. Ook heb ik nog niet echt 2e api's mar denk dat die nog wel komen. focus me nu vooral op het fixen van de spotify api. De code die in javascript staat is voornamelijk met hulp geschreven door Jad en Cyd en door de api van spotify. Met behulp van claude.
+
+## week 3
 
 ### Dag 5 — Woensdag 0 april
 
@@ -77,8 +91,6 @@ Wat ik meeneem naar volgende week: meer structuur aanbrengen in wat ik wil berei
 **Hoe lang duurde het?**
 **Wat heb ik geleerd?**
 **Wat ga ik volgende week doen?**
-
-## Weekreflectie — Week 3
 
 ## Weekreflectie — Week 3
 

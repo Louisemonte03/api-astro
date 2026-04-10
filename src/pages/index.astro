@@ -7,10 +7,16 @@
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body> </body><script src="/scripts/script.js" type="module"></script>
+  <body> </body><script>
+    import { initSpotifyAuthentication } from "../../scripts/script.js";
+    const accessToken = initSpotifyAuthentication();
+
+    console.log(accessToken, "Louise is gek");
+  </script>
+  <script src="/scripts/script.js" type="module"></script>
 </html>
