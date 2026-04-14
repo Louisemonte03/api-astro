@@ -1,5 +1,4 @@
 ---
-// Als je dit wil testen, moet je altijd naar http://127.0.0.1:4321/ (ipv localhost)
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
@@ -8,6 +7,7 @@ import MainLayout from "../layouts/MainLayout.astro";
     <meta charset="utf-8" />
     <link rel="stylesheet" href="/styles/global.css" />
     <script src="/scripts/script.js" type="module"></script>
+    <!-- swipe.js NIET hier -->
   </head>
   <body>
     <main>
@@ -17,7 +17,6 @@ import MainLayout from "../layouts/MainLayout.astro";
     <script>
       import { initSpotifyAuthentication } from "../../scripts/script.js";
       const accessToken = await initSpotifyAuthentication();
-
       console.log(accessToken, "Louise is gek");
     </script>
   </body>
