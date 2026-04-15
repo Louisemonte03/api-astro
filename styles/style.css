@@ -61,6 +61,10 @@ ul {
   transition: transform 0.15s ease;
 }
 
+.playlist-card a {
+  text-decoration: none;
+}
+
 .playlist-card:hover {
   transform: scale(1.03);
   border-color: var(--color-accent-hover);
@@ -86,7 +90,7 @@ ul {
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* responsive maken van de playlisten */
+/* ─── responsive maken van de playlisten */
 @media (max-width: 600px) {
   header {
     flex-direction: column;
@@ -101,5 +105,106 @@ ul {
 
   .profile {
     margin: 0;
+  }
+}
+
+/* hier komt de stijling van de tracks */
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 24px;
+}
+
+#playlist-title {
+  color: var(--color-text-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+}
+
+#card-container {
+  width: 360px;
+}
+
+#track-card {
+  background: var(--color-bg-surface);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: grab;
+  animation: float 3s ease-in-out infinite;
+}
+
+#track-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+#track-card div {
+  padding: 16px;
+}
+
+#track-name {
+  color: var(--color-text-primary);
+  font-size: var(--text-base);
+  font-weight: 600;
+  padding: 20px 20px 0;
+}
+
+#track-artist {
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  padding: 10px 0 20px 20px;
+}
+
+#buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+#buttons button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+#buttons button:hover {
+  transform: scale(1.1);
+}
+
+#btn-reject {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+#btn-keep {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  width: 64px;
+  height: 64px;
+  font-size: 24px;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
   }
 }

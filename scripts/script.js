@@ -16,13 +16,21 @@ export const initSpotifyAuthentication = async () => {
   } else {
     if (!accessToken) {
       accessToken = await getAccessToken(clientId, code);
+
+      if (!accessToken) {
+        localStorage.removeItem("verifier");
+        redirectToAuthCodeFlow(clientId);
+        return;
+      }
+
       localStorage.setItem("accessToken", accessToken);
+      window.history.replaceState({}, document.title, redirectUri);
     }
+
     const profile = await fetchPersonalData(accessToken, "");
     populateUI(profile);
     const playlists = await fetchPersonalData(accessToken, "/playlists");
     populatePlaylists(playlists);
-    // console.log(playlists);
   }
 };
 
@@ -67,7 +75,6 @@ const redirectToAuthCodeFlow = async (clientId) => {
 
 async function getAccessToken(clientId, code) {
   const verifier = localStorage.getItem("verifier");
-  console.log("verifier", verifier);
 
   const params = new URLSearchParams();
   params.append("client_id", clientId);
@@ -82,9 +89,10 @@ async function getAccessToken(clientId, code) {
     body: params,
   });
 
-  const { access_token } = await result.json();
+  const data = await result.json();
+  console.log("token response:", data);
 
-  return access_token;
+  return data.access_token;
 }
 
 const getSearchParams = (param) => {
@@ -120,6 +128,7 @@ function populatePlaylists(playlists) {
     card.querySelector(".card-name").innerText = playlist.name;
     card.querySelector(".card-tracks").innerText =
       `${playlist.items.total} nummers`;
+    card.querySelector("a").href = `/tracks?id=${playlist.id}`; // ← dit
     section.appendChild(card);
   });
 }

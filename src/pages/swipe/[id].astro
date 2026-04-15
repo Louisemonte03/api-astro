@@ -1,10 +1,9 @@
 ---
-import MainLayout from "../../layouts/MainLayout.astro";
-const { id } = Astro.params;
+// console.log(Astro.params.id);
+const id = Astro.params.id;
+
+// fetch playlist api met playlist id
+//  console log zodat je de response kan zien
 ---
 
-<MainLayout title="Swipe">
-  <div id="swipe-container" data-playlist-id={id}></div>
-</MainLayout>
-
-<script src="/scripts/swipe.js" type="module"></script>
+<h1>detailspagina voor {id}</h1>
