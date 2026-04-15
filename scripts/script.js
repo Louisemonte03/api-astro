@@ -59,7 +59,6 @@ const redirectToAuthCodeFlow = async (clientId) => {
     "scope",
     "user-read-private user-read-email playlist-read-private playlist-modify-private playlist-modify-public",
   );
-  
   params.append("code_challenge_method", "S256");
   params.append("code_challenge", challenge);
 
@@ -116,16 +115,11 @@ function populatePlaylists(playlists) {
     const card = template.cloneNode(true);
     card.removeAttribute("id");
     card.style.display = "";
-    card.querySelector("img").src = playlist.images?.[0]?.url ?? "";
+    card.querySelector("img").src = playlist.images[0]?.url ?? "";
     card.querySelector("img").alt = playlist.name;
     card.querySelector(".card-name").innerText = playlist.name;
     card.querySelector(".card-tracks").innerText =
-      `${playlist.tracks?.total ?? 0} nummers`;
-
-    card.addEventListener("click", () => {
-      window.location.href = `/swipe/${playlist.id}`;
-    });
-
+      `${playlist.items.total} nummers`;
     section.appendChild(card);
   });
 }

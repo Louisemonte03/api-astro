@@ -1,9 +1,10 @@
-<!-- ---
+---
 import MainLayout from "../../layouts/MainLayout.astro";
+const { id } = Astro.params;
 ---
 
 <MainLayout title="Swipe">
-  <div id="swipe-container"></div>
+  <div id="swipe-container" data-playlist-id={id}></div>
 </MainLayout>
 
-<script src="/scripts/swipe.js" type="module"></script> -->
+<script src="/scripts/swipe.js" type="module"></script>
