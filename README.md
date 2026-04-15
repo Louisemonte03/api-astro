@@ -78,12 +78,19 @@ Deze week was best raar want woesndag had ik eigenlijk het idee dat ik niet veel
 
 ## week 3
 
-### Dag 5 — Woensdag 0 april
+### Dag 5 — Woensdag 15 april
 
 **Wat heb ik gedaan?**
+Vandaag heb ik de tracks succesvol ingeladen in de app. Dat was even puzzelen, maar het is gelukt. Daarnaast heb ik een les gevolgd over dynamische routes in Astro, wat goed van pas gaat komen voor de verdere opbouw van Swipify.
+
 **Hoe lang duurde het?**
+hele dag mee bezig geweest dus 8 uurtjes ofzo
+
 **Wat heb ik geleerd?**
+Hoe dynamische routes werken in Astro en hoe je die koppelt aan data in dit geval trackdata van Spotify. Ook ben ik beter gaan begrijpen hoe de data door de app heen stroomt, van de API-call naar de pagina.
+
 **Wat ga ik morgen doen?**
+Morgen wil ik twee Web API's integreren: de Pointer Events API en de Web Animations API. De Pointer Events API gebruik ik voor de swipe-interactie, de Web Animations API voor vloeiende animaties bij het swipen. Daarnaast moet de update van de afspeellijst nog worden afgehandeld zonder die logica werkt de kern van de app niet. Dat is dus prioriteit. Als er tijd over is, wil ik ook audio per track toevoegen als extra feature.
 
 ### Dag 6 — Donderdag 0 april
 
