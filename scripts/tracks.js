@@ -108,6 +108,6 @@ async function updatePlaylist() {
     const errorData = await response.json();
     console.log("Error details:", errorData);
   }
-}
+};
 
 window.updatePlaylist = updatePlaylist;
