@@ -12,11 +12,10 @@
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body> </body><script>
-    import { initSpotifyAuthentication } from "../../scripts/script.js";
-    const accessToken = initSpotifyAuthentication();
-
-    console.log(accessToken, "Louise is gek");
-  </script>
-  <script src="/scripts/script.js" type="module"></script>
+  <body>
+    <script>
+      import { initSpotifyAuthentication } from "../../scripts/script.js";
+      initSpotifyAuthentication();
+    </script>
+  </body>
 </html>

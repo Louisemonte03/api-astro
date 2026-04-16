@@ -1,8 +1,3 @@
-/* MARK: inlog documenta
- */
-
-// const { xid } = require("astro:schema");
-
 const clientId = "5ee2c5425e034edbb2bc28779cc82aee";
 const redirectUri = "http://127.0.0.1:4321/callback";
 
@@ -126,8 +121,6 @@ function populatePlaylists(playlists) {
     card.querySelector("img").src = playlist.images[0]?.url ?? "";
     card.querySelector("img").alt = playlist.name;
     card.querySelector(".card-name").innerText = playlist.name;
-    card.querySelector(".card-tracks").innerText =
-      `${playlist.items.total} nummers`;
     card.querySelector("a").href = `/tracks?id=${playlist.id}`; // ← dit
     section.appendChild(card);
   });

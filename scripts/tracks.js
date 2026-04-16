@@ -1,7 +1,85 @@
 let tracks = [];
 let currentIndex = 0;
 const toRemove = [];
-let currentAudio = null; // ← hier
+let currentAudio = null;
+
+const card = document.getElementById("track-card");
+const SWIPE_THRESHOLD = 100;
+
+let startX = 0;
+let dragX = 0;
+let isDragging = false;
+
+// Pointer Events — detecteert slepen op muis én touch
+card.addEventListener("pointerdown", (e) => {
+  isDragging = true;
+  startX = e.clientX;
+  dragX = 0;
+  card.setPointerCapture(e.pointerId);
+  card.style.animation = "none"; // float pauzeren tijdens slepen
+});
+
+card.addEventListener("pointermove", (e) => {
+  if (!isDragging) return;
+  dragX = e.clientX - startX;
+  card.style.transform = `translateX(${dragX}px) rotate(${dragX * 0.05}deg)`;
+});
+
+card.addEventListener("pointerup", () => {
+  if (!isDragging) return;
+  isDragging = false;
+
+  if (Math.abs(dragX) > SWIPE_THRESHOLD) {
+    swipeCard(dragX > 0 ? "right" : "left");
+  } else {
+    // Web Animations — kaart terug naar midden
+    card
+      .animate(
+        [
+          { transform: `translateX(${dragX}px) rotate(${dragX * 0.05}deg)` },
+          { transform: "translateX(0) rotate(0deg)" },
+        ],
+        { duration: 200, easing: "ease-out" },
+      )
+      .finished.then(() => {
+        card.style.transform = "";
+        card.style.animation = ""; // float hervatten
+      });
+    dragX = 0;
+  }
+});
+
+// Web Animations — kaart vliegt weg naar links of rechts
+function swipeCard(direction) {
+  const targetX =
+    direction === "right" ? window.innerWidth * 1.5 : -window.innerWidth * 1.5;
+  const rotation = direction === "right" ? 30 : -30;
+
+  card
+    .animate(
+      [
+        { transform: `translateX(${dragX}px) rotate(${dragX * 0.05}deg)` },
+        { transform: `translateX(${targetX}px) rotate(${rotation}deg)` },
+      ],
+      { duration: 300, easing: "ease-out", fill: "forwards" },
+    )
+    .finished.then(() => {
+      if (direction === "left") toRemove.push(tracks[currentIndex]);
+      currentIndex++;
+      dragX = 0;
+      showTrack();
+    });
+}
+
+document.getElementById("btn-reject").onclick = () => {
+  dragX = 0;
+  swipeCard("left");
+};
+
+document.getElementById("btn-keep").onclick = () => {
+  dragX = 0;
+  swipeCard("right");
+};
 
 async function getPlaylistTracks() {
   const accessToken = localStorage.getItem("accessToken");
@@ -34,9 +112,22 @@ async function getPlaylistTracks() {
 }
 
 function showTrack() {
+  card.getAnimations().forEach((a) => a.cancel()); // WAAPI fill resetten
+  card.style.transform = "";
+  card.style.animation = ""; // float hervatten voor nieuwe kaart
+
   if (currentIndex >= tracks.length) {
-    document.getElementById("track-card").innerText = "Klaar!";
     if (currentAudio) currentAudio.pause();
+    document.getElementById("buttons").style.display = "none";
+    card.innerHTML = `
+      <div class="done-state">
+      <span class="done-icon">
+  <img src="public/images/spotify.svg" width="20px" height="auto" alt="done">
+</span>
+        <p class="done-title">Alle nummers zijn geweest</p>
+        <p class="done-subtitle">${toRemove.length} nummer${toRemove.length !== 1 ? "s" : ""} gemarkeerd om te verwijderen</p>
+      </div>
+    `;
     return;
   }
 
@@ -53,20 +144,7 @@ function showTrack() {
   }
 }
 
-document.getElementById("btn-reject").onclick = () => {
-  toRemove.push(tracks[currentIndex]);
-  currentIndex++;
-  showTrack();
-};
-
-document.getElementById("btn-keep").onclick = () => {
-  currentIndex++;
-  showTrack();
-};
-
 getPlaylistTracks();
-
-// updating playlist
 
 async function updatePlaylist() {
   const accessToken = localStorage.getItem("accessToken");
@@ -77,8 +155,6 @@ async function updatePlaylist() {
     return;
   }
 
-  console.log("toRemove:", toRemove); // ← hier §
-
   const snapshotResponse = await fetch(
     `https://api.spotify.com/v1/playlists/${playlistId}`,
     {
@@ -87,7 +163,6 @@ async function updatePlaylist() {
   );
   const snapshotData = await snapshotResponse.json();
   const snapshotId = snapshotData.snapshot_id;
-  console.log("snapshot_id:", snapshotId); // ← hier
 
   const response = await fetch(
     `https://api.spotify.com/v1/playlists/${playlistId}/items`,
@@ -102,12 +177,13 @@ async function updatePlaylist() {
       }),
     },
   );
+
   if (response.ok) {
     alert("Playlist bijgewerkt!");
   } else {
     const errorData = await response.json();
-    console.log("Error details:", errorData);
+    console.error("Error details:", errorData);
   }
-};
+}
 
 window.updatePlaylist = updatePlaylist;

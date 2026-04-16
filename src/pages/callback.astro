@@ -2,21 +2,9 @@
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="/styles/global.css" />
-    <script src="/scripts/script.js" type="module"></script>
-  </head>
-  <body>
-    <main>
-      <MainLayout />
-    </main>
+<MainLayout title="Home" />
 
-    <script>
-      import { initSpotifyAuthentication } from "../../scripts/script.js";
-      const accessToken = await initSpotifyAuthentication();
-      console.log(accessToken, "Louise is gek");
-    </script>
-  </body>
-</html>
+<script>
+  import { initSpotifyAuthentication } from "../../scripts/script.js";
+  await initSpotifyAuthentication();
+</script>

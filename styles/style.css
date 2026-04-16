@@ -2,14 +2,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1em;
-  color: var(--color-text-primary);
   padding: 20px;
-}
-ul {
-  display: flex;
-  gap: 1em;
-  list-style-type: none;
+  color: var(--color-text-primary);
 }
 
 .profile {
@@ -82,7 +76,6 @@ ul {
   font-size: 13px;
   font-weight: 600;
   color: white;
-  transition: transform 0.15s ease;
 }
 
 .card-tracks {
@@ -141,10 +134,6 @@ body {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-}
-
-#track-card div {
-  padding: 16px;
 }
 
 #track-name {
@@ -207,4 +196,63 @@ body {
   100% {
     transform: translateY(0px);
   }
+}
+
+/* eindstate */
+
+.done-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 40px 24px;
+}
+
+.done-icon {
+  font-size: 48px;
+  color: var(--color-accent);
+  background: rgba(29, 185, 84, 0.12);
+  border: 2px solid rgba(29, 185, 84, 0.3);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.done-title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-top: 8px;
+}
+
+.done-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+/* button update stijling */
+
+#btn-update {
+  padding: 10px 200px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-accent);
+  color: var(--color-text-primary);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.25),
+    0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+#btn-update:hover {
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.03);
+  transition: all 0.2s ease;
+  background-color: var(--color-accent-hover);
 }
