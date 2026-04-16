@@ -92,12 +92,22 @@ Hoe dynamische routes werken in Astro en hoe je die koppelt aan data in dit geva
 **Wat ga ik morgen doen?**
 Morgen wil ik twee Web API's integreren: de Pointer Events API en de Web Animations API. De Pointer Events API gebruik ik voor de swipe-interactie, de Web Animations API voor vloeiende animaties bij het swipen. Daarnaast moet de update van de afspeellijst nog worden afgehandeld zonder die logica werkt de kern van de app niet. Dat is dus prioriteit. Als er tijd over is, wil ik ook audio per track toevoegen als extra feature.
 
-### Dag 6 — Donderdag 0 april
+### Dag 6 — Donderdag 16 april
 
 **Wat heb ik gedaan?**
+HTML, CSS en JavaScript opgeschoond — dubbele code verwijderd en de codebase opgeruimd. Daarnaast twee Web API's geïmplementeerd: Pointer Events (voor betere input-afhandeling van muis, touch en stylus) en de Web Animations API.
+
 **Hoe lang duurde het?**
+4 uurtjes
+
 **Wat heb ik geleerd?**
+Pointer Events zijn een uniforme manier om input te verwerken van muis, touch én stylus via één event-systeem pointerdown, pointermove pointerup. Met setPointerCapture zorg je dat een element events blijft ontvangen, ook als de pointer erbuiten beweegt.
+
+De Web Animations API laat je animaties direct via JavaScript aansturen zonder CSS-klassen te toglen. Met element.animate definieer je keyframes en timing, de .finished promise laat je wachten tot een animatie klaar is, en met getAnimations en animation.cancel houd je controle over lopende animaties.
+
 **Wat ga ik volgende week doen?**
+Prioriteit 1 — de lijst kunnen updaten (toevoegen/bewerken/verwijderen).
+Prioriteit 2 — audio: de tracks die afspelen werkend krijgen.
 
 ## Weekreflectie — Week 3
 
