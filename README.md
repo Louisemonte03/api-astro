@@ -111,6 +111,8 @@ Prioriteit 2 — audio: de tracks die afspelen werkend krijgen.
 
 ## Weekreflectie — Week 3
 
+Geen voortgangs gesprek
+
 ## week 4
 
 ### Dag 7 — Woensdag 0 april
