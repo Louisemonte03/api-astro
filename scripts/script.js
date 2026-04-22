@@ -86,6 +86,8 @@ async function getAccessToken(clientId, code) {
 
   const data = await result.json();
   console.log("token response:", data);
+  console.log("Granted scopes:", data.scope);
+  localStorage.setItem("grantedScopes", data.scope);
 
   return data.access_token;
 }
@@ -121,7 +123,8 @@ function populatePlaylists(playlists) {
     card.querySelector("img").src = playlist.images[0]?.url ?? "";
     card.querySelector("img").alt = playlist.name;
     card.querySelector(".card-name").innerText = playlist.name;
-    card.querySelector("a").href = `/tracks?id=${playlist.id}`; // ← dit
+    card.querySelector("a").href =
+      `/tracks?id=${playlist.id}&name=${encodeURIComponent(playlist.name)}`;
     section.appendChild(card);
   });
 }

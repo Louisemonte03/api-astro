@@ -1,22 +1,23 @@
 let tracks = [];
+let keptTracks = [];
 let currentIndex = 0;
-const toRemove = [];
-let currentAudio = null;
+let removedCount = 0;
 
 const card = document.getElementById("track-card");
 const SWIPE_THRESHOLD = 100;
+const accessToken = localStorage.getItem("accessToken");
+const playlistId = new URLSearchParams(window.location.search).get("id");
 
 let startX = 0;
 let dragX = 0;
 let isDragging = false;
 
-// Pointer Events — detecteert slepen op muis én touch
 card.addEventListener("pointerdown", (e) => {
   isDragging = true;
   startX = e.clientX;
   dragX = 0;
   card.setPointerCapture(e.pointerId);
-  card.style.animation = "none"; // float pauzeren tijdens slepen
+  card.style.animation = "none";
 });
 
 card.addEventListener("pointermove", (e) => {
@@ -32,7 +33,6 @@ card.addEventListener("pointerup", () => {
   if (Math.abs(dragX) > SWIPE_THRESHOLD) {
     swipeCard(dragX > 0 ? "right" : "left");
   } else {
-    // Web Animations — kaart terug naar midden
     card
       .animate(
         [
@@ -43,13 +43,12 @@ card.addEventListener("pointerup", () => {
       )
       .finished.then(() => {
         card.style.transform = "";
-        card.style.animation = ""; // float hervatten
+        card.style.animation = "";
       });
     dragX = 0;
   }
 });
 
-// Web Animations — kaart vliegt weg naar links of rechts
 function swipeCard(direction) {
   const targetX =
     direction === "right" ? window.innerWidth * 1.5 : -window.innerWidth * 1.5;
@@ -64,11 +63,45 @@ function swipeCard(direction) {
       { duration: 300, easing: "ease-out", fill: "forwards" },
     )
     .finished.then(() => {
-      if (direction === "left") toRemove.push(tracks[currentIndex]);
+      if (direction === "right") {
+        keptTracks.push(tracks[currentIndex]);
+      } else {
+        removedCount++;
+      }
       currentIndex++;
       dragX = 0;
       showTrack();
     });
+}
+
+async function savePlaylist() {
+  const btn = document.getElementById("btn-save");
+  btn.disabled = true;
+  btn.innerText = "Opslaan...";
+
+  const uris = keptTracks.map((t) => t.uri);
+
+  const response = await fetch(
+    `https://api.spotify.com/v1/playlists/${playlistId}/items`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ uris }),
+    },
+  );
+
+  if (response.ok) {
+    btn.innerText = "Opgeslagen!";
+    btn.style.opacity = "0.6";
+  } else {
+    const err = await response.text();
+    console.error("Opslaan mislukt:", response.status, err);
+    btn.innerText = "Mislukt — probeer opnieuw";
+    btn.disabled = false;
+  }
 }
 
 document.getElementById("btn-reject").onclick = () => {
@@ -82,11 +115,8 @@ document.getElementById("btn-keep").onclick = () => {
 };
 
 async function getPlaylistTracks() {
-  const accessToken = localStorage.getItem("accessToken");
-  const playlistId = new URLSearchParams(window.location.search).get("id");
   const playlistName = new URLSearchParams(window.location.search).get("name");
-
-  document.getElementById("playlist-title").innerText = playlistName;
+  document.getElementById("playlist-title").innerText = playlistName ?? "";
 
   if (!accessToken || !playlistId) {
     console.error("Geen token of playlist ID gevonden");
@@ -101,7 +131,7 @@ async function getPlaylistTracks() {
   );
 
   if (!response.ok) {
-    console.error("Fout:", response.status);
+    console.error("Fout bij ophalen nummers:", response.status);
     return;
   }
 
@@ -112,22 +142,23 @@ async function getPlaylistTracks() {
 }
 
 function showTrack() {
-  card.getAnimations().forEach((a) => a.cancel()); // WAAPI fill resetten
+  card.getAnimations().forEach((a) => a.cancel());
   card.style.transform = "";
-  card.style.animation = ""; // float hervatten voor nieuwe kaart
+  card.style.animation = "";
 
   if (currentIndex >= tracks.length) {
-    if (currentAudio) currentAudio.pause();
     document.getElementById("buttons").style.display = "none";
     card.innerHTML = `
       <div class="done-state">
-      <span class="done-icon">
-  <img src="public/images/spotify.svg" width="20px" height="auto" alt="done">
-</span>
+        <span class="done-icon">
+          <img src="/images/spotify.svg" width="20px" height="auto" alt="Spotify">
+        </span>
         <p class="done-title">Alle nummers zijn geweest</p>
-        <p class="done-subtitle">${toRemove.length} nummer${toRemove.length !== 1 ? "s" : ""} gemarkeerd om te verwijderen</p>
+        <p class="done-subtitle">${keptTracks.length} bewaard &middot; ${removedCount} verwijderd</p>
       </div>
     `;
+    document.getElementById("btn-save").style.display = "block";
+    document.getElementById("btn-back").style.display = "block";
     return;
   }
 
@@ -135,13 +166,6 @@ function showTrack() {
   document.getElementById("track-img").src = track.album.images[0]?.url ?? "";
   document.getElementById("track-name").innerText = track.name;
   document.getElementById("track-artist").innerText = track.artists[0].name;
-
-  if (currentAudio) currentAudio.pause();
-  if (track.preview_url) {
-    currentAudio = new Audio(track.preview_url);
-    currentAudio.volume = 0.5;
-    currentAudio.play();
-  }
 }
 
 getPlaylistTracks();

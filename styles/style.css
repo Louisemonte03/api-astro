@@ -234,10 +234,27 @@ body {
   color: var(--color-text-secondary);
 }
 
-/* button update stijling */
+/* button terug stijling */
 
-#btn-update {
-  padding: 10px 200px;
+#btn-save {
+  padding: 14px 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-accent);
+  color: var(--color-text-primary);
+  font-size: var(--text-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#btn-save:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+  transform: scale(1.03);
+}
+
+#btn-back {
+  padding: 14px 40px;
   border: none;
   border-radius: 10px;
   background-color: var(--color-accent);
@@ -248,7 +265,7 @@ body {
   transition: all 0.2s ease;
 }
 
-#btn-update:hover {
+#btn-back:hover {
   box-shadow:
     0 12px 32px rgba(0, 0, 0, 0.35),
     0 4px 12px rgba(0, 0, 0, 0.2);

@@ -115,14 +115,14 @@ Geen voortgangs gesprek
 
 ## week 4
 
-### Dag 7 — Woensdag 0 april
+### Dag 7 — Woensdag 22 april
 
 **Wat heb ik gedaan?**
 **Hoe lang duurde het?**
 **Wat heb ik geleerd?**
 **Wat ga ik morgen doen?**
 
-### Dag 8 — Donderdag 0 april
+### Dag 8 — Donderdag 23 april
 
 **Wat heb ik gedaan?**
 **Hoe lang duurde het?**
