@@ -11,6 +11,39 @@ const playlistId = new URLSearchParams(window.location.search).get("id");
 let startX = 0;
 let dragX = 0;
 let isDragging = false;
+let deviceId = null;
+
+window.onSpotifyWebPlaybackSDKReady = () => {
+  const player = new Spotify.Player({
+    name: "PlaylistSwipe",
+    getOAuthToken: (cb) => cb(accessToken),
+    volume: 0.5,
+  });
+
+  player.addListener("ready", ({ device_id }) => {
+    deviceId = device_id;
+    playCurrentTrack();
+  });
+
+  player.connect();
+};
+
+async function playCurrentTrack() {
+  const track = tracks[currentIndex];
+  if (!deviceId || !track?.uri) return;
+
+  await fetch(
+    `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ uris: [track.uri] }),
+    },
+  );
+}
 
 card.addEventListener("pointerdown", (e) => {
   isDragging = true;
@@ -147,6 +180,12 @@ function showTrack() {
   card.style.animation = "";
 
   if (currentIndex >= tracks.length) {
+    if (deviceId) {
+      fetch(`https://api.spotify.com/v1/me/player/pause?device_id=${deviceId}`, {
+        method: "PUT",
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+    }
     document.getElementById("buttons").style.display = "none";
     card.innerHTML = `
       <div class="done-state">
@@ -166,6 +205,8 @@ function showTrack() {
   document.getElementById("track-img").src = track.album.images[0]?.url ?? "";
   document.getElementById("track-name").innerText = track.name;
   document.getElementById("track-artist").innerText = track.artists[0].name;
+
+  playCurrentTrack();
 }
 
 getPlaylistTracks();

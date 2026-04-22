@@ -60,7 +60,7 @@ const redirectToAuthCodeFlow = async (clientId) => {
   params.append("redirect_uri", redirectUri);
   params.append(
     "scope",
-    "user-read-private user-read-email playlist-read-private playlist-modify-private playlist-modify-public",
+    "user-read-private user-read-email playlist-read-private playlist-modify-private playlist-modify-public streaming user-read-playback-state user-modify-playback-state",
   );
   params.append("code_challenge_method", "S256");
   params.append("code_challenge", challenge);
