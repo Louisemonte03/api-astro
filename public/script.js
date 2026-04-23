@@ -9,7 +9,7 @@ export const initSpotifyAuthentication = async (options) => {
     redirectToAuthCodeFlow({ clientId, redirectUri });
   } else {
     if (!accessToken) {
-      accessToken = await getAccessToken(clientId, code);
+      accessToken = await getAccessToken(redirectUri, clientId, code);
 
       if (!accessToken) {
         localStorage.removeItem("verifier");
@@ -67,7 +67,7 @@ const redirectToAuthCodeFlow = async ({ clientId, redirectUri }) => {
   window.location = `https://accounts.spotify.com/authorize?${params.toString()}`;
 };
 
-async function getAccessToken(clientId, code) {
+async function getAccessToken(redirectUri, clientId, code) {
   const verifier = localStorage.getItem("verifier");
 
   const params = new URLSearchParams();
@@ -106,7 +106,9 @@ async function fetchPersonalData(token, path) {
 function populateUI(profile) {
   document.getElementById("displayName").innerText = profile.display_name;
   document.getElementById("email").innerText = profile.email;
-  document.getElementById("imgUrl").src = profile.images[0]?.url;
+  document.getElementById("imgUrl").src = profile.images
+    ? profile.images[0]?.url
+    : "";
 }
 
 // voor playlisten

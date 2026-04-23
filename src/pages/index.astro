@@ -1,5 +1,6 @@
 ---
-
+const redirectUri = import.meta.env.REDIRECT_URI;
+console.log(redirectUri);
 ---
 
 <html lang="en">
@@ -13,9 +14,9 @@
     <title>Astro</title>
   </head>
   <body>
-    <script>
-      import { initSpotifyAuthentication } from "../../scripts/script.js";
-      initSpotifyAuthentication();
+    <script define:vars={{ redirectUri }} type="module">
+      import { initSpotifyAuthentication } from "/script.js";
+      await initSpotifyAuthentication({ redirectUri });
     </script>
   </body>
 </html>
