@@ -1,10 +1,13 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+
+const redirectUri = import.meta.env.REDIRECT_URI;
+console.log(redirectUri);
 ---
 
 <MainLayout title="Home" />
 
-<script>
+<script define:vars={{ redirectUri }} type="module">
   import { initSpotifyAuthentication } from "../../scripts/script.js";
-  await initSpotifyAuthentication();
+  await initSpotifyAuthentication({ redirectUri });
 </script>

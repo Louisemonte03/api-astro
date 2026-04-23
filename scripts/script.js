@@ -1,20 +1,19 @@
 const clientId = "5ee2c5425e034edbb2bc28779cc82aee";
-const redirectUri = "http://127.0.0.1:4321/callback";
 
-export const initSpotifyAuthentication = async () => {
+export const initSpotifyAuthentication = async (options) => {
+  const { redirectUri } = options;
   const code = getSearchParams("code");
   let accessToken = localStorage.getItem("accessToken");
-  console.log({ accessToken });
 
   if (!code) {
-    redirectToAuthCodeFlow(clientId);
+    redirectToAuthCodeFlow({ clientId, redirectUri });
   } else {
     if (!accessToken) {
       accessToken = await getAccessToken(clientId, code);
 
       if (!accessToken) {
         localStorage.removeItem("verifier");
-        redirectToAuthCodeFlow(clientId);
+        redirectToAuthCodeFlow({ clientId, redirectUri });
         return;
       }
 
@@ -48,7 +47,7 @@ const generateCodeChallenge = async (codeVerifier) => {
     .replace(/=+$/, "");
 };
 
-const redirectToAuthCodeFlow = async (clientId) => {
+const redirectToAuthCodeFlow = async ({ clientId, redirectUri }) => {
   const verifier = generateCodeVerifier(128);
 
   const challenge = await generateCodeChallenge(verifier);

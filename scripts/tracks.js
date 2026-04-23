@@ -181,10 +181,13 @@ function showTrack() {
 
   if (currentIndex >= tracks.length) {
     if (deviceId) {
-      fetch(`https://api.spotify.com/v1/me/player/pause?device_id=${deviceId}`, {
-        method: "PUT",
-        headers: { Authorization: `Bearer ${accessToken}` },
-      });
+      fetch(
+        `https://api.spotify.com/v1/me/player/pause?device_id=${deviceId}`,
+        {
+          method: "PUT",
+          headers: { Authorization: `Bearer ${accessToken}` },
+        },
+      );
     }
     document.getElementById("buttons").style.display = "none";
     card.innerHTML = `
