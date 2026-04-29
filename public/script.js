@@ -111,7 +111,7 @@ function populateUI(profile) {
     : "";
 }
 
-// voor playlisten
+// voor playlisten ophalen
 
 function populatePlaylists(playlists) {
   const section = document.getElementById("playlists");

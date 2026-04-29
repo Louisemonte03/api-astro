@@ -118,15 +118,39 @@ Geen voortgangs gesprek
 ### Dag 7 — Woensdag 22 april
 
 **Wat heb ik gedaan?**
+Ik heb de audio-afspeelfunctionaliteit geïmplementeerd voor het nummer. Daarnaast heb ik gewerkt aan het updaten van de lijst, wat meer tijd kostte dan verwacht.
+
 **Hoe lang duurde het?**
+Hele dag mee bezig geweest
+
 **Wat heb ik geleerd?**
+Dat de huidige documentatie niet altijd de oplossing biedt — ik heb uiteindelijk de deprecated documentatie gebruikt om de lijst-update werkend te krijgen. Soms is oudere documentatie nog steeds de meest praktische oplossing.
+
 **Wat ga ik morgen doen?**
+Verder met het updaten van de lijst en de applicatie live zetten op Render.
 
 ### Dag 8 — Donderdag 23 april
 
 **Wat heb ik gedaan?**
+Verder gegaan met het updaten van de lijst en de applicatie gedeployed op Render. De deployment werkt, maar er zijn nog een aantal dingen die niet goed functioneren in de live omgeving.
+
 **Hoe lang duurde het?**
+Hele dag mee bezig geweest
+
 **Wat heb ik geleerd?**
+Dat een lokaal werkende applicatie zich anders kan gedragen in een productieomgeving. Deployment brengt eigen uitdagingen met zich mee die je lokaal niet tegenkomt.
+
 **Wat ga ik volgende week doen?**
+De resterende problemen in de Render-omgeving oplossen en de applicatie volledig werkend krijgen.
 
 ## Weekreflectie — Week 4
+
+Deze week was best pittig. Ik heb de audio-afspeelfunctionaliteit werkend gekregen via de Spotify Web playback SDK. Het updaten van de playlist was een flinke struggle de normale documentatie werkte niet en uiteindelijk heb ik de deprecated documentatie maar gebruikt. Niet ideaal, maar het werkte wel.
+
+Op donderdag heb ik de app live gezet op Render, ik zag gelijk dat er nog dingen niet kloppen in de live omgeving. Dingen die lokaal gewoon werkten, doen het ineens niet meer.
+
+Volgende week ga ik die bugs in Render fixen
+
+## Bronnen
+
+_[vul bronnen in]_
