@@ -153,4 +153,8 @@ Volgende week ga ik die bugs in Render fixen
 
 ## Bronnen
 
-_[vul bronnen in]_
+- [Spotify Web API — Authorization Code + PKCE Flow](https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow)
+- [Spotify Web API — Playlists & Tracks](https://developer.spotify.com/documentation/web-api/)
+- [Spotify Web Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk/)
+- [Pointer Events API — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events)
+- [Web Animations API — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API)
