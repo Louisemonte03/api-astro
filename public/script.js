@@ -1,6 +1,3 @@
-// Bron: Spotify Authorization Code + PKCE Flow
-// https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow
-
 const clientId = "5ee2c5425e034edbb2bc28779cc82aee";
 
 export const initSpotifyAuthentication = async (options) => {
@@ -51,6 +48,8 @@ const generateCodeChallenge = async (codeVerifier) => {
     .replace(/=+$/, "");
 };
 
+// Bron: Spotify Authorization Code + PKCE Flow
+// https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow
 const redirectToAuthCodeFlow = async ({ clientId, redirectUri }) => {
   const verifier = generateCodeVerifier(128);
   const challenge = await generateCodeChallenge(verifier);

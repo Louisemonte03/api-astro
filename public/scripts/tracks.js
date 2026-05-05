@@ -1,9 +1,3 @@
-// Bronnen:
-// Spotify Web API: https://developer.spotify.com/documentation/web-api/
-// Spotify Web Playback SDK: https://developer.spotify.com/documentation/web-playback-sdk/
-// Pointer Events API: https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events
-// Web Animations API: https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API
-
 let tracks = [];
 let keptTracks = [];
 let currentIndex = 0;
@@ -19,6 +13,8 @@ let dragX = 0;
 let isDragging = false;
 let deviceId = null;
 
+// Bron: Spotify Web Playback SDK
+// https://developer.spotify.com/documentation/web-playback-sdk/
 window.onSpotifyWebPlaybackSDKReady = () => {
   const player = new Spotify.Player({
     name: "PlaylistSwipe",
@@ -34,6 +30,8 @@ window.onSpotifyWebPlaybackSDKReady = () => {
   player.connect();
 };
 
+// Bron: Spotify Web API
+// https://developer.spotify.com/documentation/web-api/
 async function playCurrentTrack() {
   const track = tracks[currentIndex];
   if (!deviceId || !track?.uri) return;
@@ -51,6 +49,8 @@ async function playCurrentTrack() {
   );
 }
 
+// Bron: Pointer Events API
+// https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events
 card.addEventListener("pointerdown", (e) => {
   isDragging = true;
   startX = e.clientX;
@@ -88,6 +88,8 @@ card.addEventListener("pointerup", () => {
   }
 });
 
+// Bron: Web Animations API
+// https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API
 function swipeCard(direction) {
   const targetX =
     direction === "right" ? window.innerWidth * 1.5 : -window.innerWidth * 1.5;
