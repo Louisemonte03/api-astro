@@ -1,0 +1,64 @@
+---
+
+---
+
+<html>
+  <head>
+    <title>Tracks</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body>
+    <h1 id="playlist-title"></h1>
+
+    <div id="card-container">
+      <div id="track-card">
+        <img id="track-img" alt="" />
+        <p id="track-name"></p>
+        <p id="track-artist"></p>
+      </div>
+    </div>
+
+    <div id="buttons">
+      <button id="btn-reject"
+        ><svg
+          width="40px"
+          height="40px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M5.46967 5.46967C5.76256 5.17678 6.23744 5.17678 6.53033 5.46967L18.5303 17.4697C18.8232 17.7626 18.8232 18.2374 18.5303 18.5303C18.2374 18.8232 17.7626 18.8232 17.4697 18.5303L5.46967 6.53033C5.17678 6.23744 5.17678 5.76256 5.46967 5.46967Z"
+            fill="#e74c3c"></path>
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M18.5303 5.46967C18.8232 5.76256 18.8232 6.23744 18.5303 6.53033L6.53035 18.5303C6.23745 18.8232 5.76258 18.8232 5.46969 18.5303C5.17679 18.2374 5.17679 17.7626 5.46968 17.4697L17.4697 5.46967C17.7626 5.17678 18.2374 5.17678 18.5303 5.46967Z"
+            fill="#e74c3c"></path>
+        </svg></button
+      >
+      <button id="btn-keep"
+        ><svg
+          width="30px"
+          height="30px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z"
+            fill="#1db954"></path>
+        </svg></button
+      >
+    </div>
+
+    <button id="btn-save" style="display:none" onclick="savePlaylist()">Playlist opslaan</button>
+    <button id="btn-back" style="display:none" onclick="window.location.href='/callback'">Terug naar playlists</button>
+
+    <script is:inline src="/scripts/tracks.js"></script>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  </body>
+</html>

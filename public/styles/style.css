@@ -1,0 +1,275 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  color: var(--color-text-primary);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(29, 185, 84, 0.08);
+  border: 0.5px solid rgba(29, 185, 84, 0.25);
+  border-radius: 12px;
+  padding: 10px 14px;
+  backdrop-filter: blur(12px);
+  width: fit-content;
+  margin: 0 0 0 20px;
+}
+
+.profile img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile div p:first-child {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.profile div p:last-child {
+  margin: 0;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+.playlists {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.playlist-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.playlist-card a {
+  text-decoration: none;
+}
+
+.playlist-card:hover {
+  transform: scale(1.03);
+  border-color: var(--color-accent-hover);
+}
+
+.playlist-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+}
+
+.card-tracks {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ─── responsive maken van de playlisten */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .playlists {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+  }
+
+  .profile {
+    margin: 0;
+  }
+}
+
+/* hier komt de stijling van de tracks */
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 24px;
+}
+
+#playlist-title {
+  color: var(--color-text-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+}
+
+#card-container {
+  width: 360px;
+}
+
+#track-card {
+  background: var(--color-bg-surface);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: grab;
+  animation: float 3s ease-in-out infinite;
+}
+
+#track-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+#track-name {
+  color: var(--color-text-primary);
+  font-size: var(--text-base);
+  font-weight: 600;
+  padding: 20px 20px 0;
+}
+
+#track-artist {
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  padding: 10px 0 20px 20px;
+}
+
+#buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+#buttons button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+#buttons button:hover {
+  transform: scale(1.1);
+}
+
+#btn-reject {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+#btn-keep {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  width: 64px;
+  height: 64px;
+  font-size: 24px;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* eindstate */
+
+.done-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 40px 24px;
+}
+
+.done-icon {
+  font-size: 48px;
+  color: var(--color-accent);
+  background: rgba(29, 185, 84, 0.12);
+  border: 2px solid rgba(29, 185, 84, 0.3);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.done-title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-top: 8px;
+}
+
+.done-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+/* button terug stijling */
+
+#btn-save {
+  padding: 14px 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-accent);
+  color: var(--color-text-primary);
+  font-size: var(--text-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#btn-save:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+  transform: scale(1.03);
+}
+
+#btn-back {
+  padding: 14px 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-accent);
+  color: var(--color-text-primary);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.25),
+    0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+#btn-back:hover {
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.03);
+  transition: all 0.2s ease;
+  background-color: var(--color-accent-hover);
+}
