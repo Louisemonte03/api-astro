@@ -40,9 +40,9 @@ header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  max-width: 600px;
-  margin: 0 auto;
+  width: 100%;
   padding: 2rem;
+  box-sizing: border-box;
 }
 
 .playlist-card {
@@ -84,7 +84,7 @@ header {
 }
 
 /* ─── responsive maken van de playlisten */
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   header {
     flex-direction: column;
     align-items: flex-start;
@@ -103,12 +103,12 @@ header {
 
 /* hier komt de stijling van de tracks */
 
-body {
+.tracks-layout {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   gap: 24px;
 }
 

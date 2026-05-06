@@ -119,6 +119,8 @@ function swipeCard(direction) {
     });
 }
 
+// Bron: Spotify Web API — Update Playlist Items (deprecated PUT endpoint)
+// https://developer.spotify.com/documentation/web-api/reference/reorder-or-replace-playlists-tracks
 async function savePlaylist() {
   const btn = document.getElementById("btn-save");
   btn.disabled = true;
@@ -159,6 +161,8 @@ document.getElementById("btn-keep").onclick = () => {
   swipeCard("right");
 };
 
+// Bron: Spotify Web API — Get Playlist Items
+// https://developer.spotify.com/documentation/web-api/reference/get-playlists-tracks
 async function getPlaylistTracks() {
   const playlistName = new URLSearchParams(window.location.search).get("name");
   document.getElementById("playlist-title").innerText = playlistName ?? "";

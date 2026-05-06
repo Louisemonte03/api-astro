@@ -30,6 +30,6 @@
 }
 body {
   background: radial-gradient(circle 600px at center, #1db954 0%, #000000 60%);
-  height: 100vh;
+  min-height: 100vh;
   font-family: sans-serif;
 }

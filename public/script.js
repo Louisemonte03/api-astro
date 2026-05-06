@@ -29,6 +29,8 @@ export const initSpotifyAuthentication = async (options) => {
   }
 };
 
+// Bron: Spotify Authorization Code + PKCE Flow
+// https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow
 const generateCodeVerifier = (length) => {
   let text = "";
   let possible =
@@ -39,6 +41,8 @@ const generateCodeVerifier = (length) => {
   return text;
 };
 
+// Bron: Web Crypto API — SubtleCrypto.digest()
+// https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest
 const generateCodeChallenge = async (codeVerifier) => {
   const data = new TextEncoder().encode(codeVerifier);
   const digest = await window.crypto.subtle.digest("SHA-256", data);
@@ -70,6 +74,8 @@ const redirectToAuthCodeFlow = async ({ clientId, redirectUri }) => {
   window.location = `https://accounts.spotify.com/authorize?${params.toString()}`;
 };
 
+// Bron: Spotify Web API — Token endpoint
+// https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow#request-an-access-token
 async function getAccessToken(redirectUri, clientId, code) {
   const verifier = localStorage.getItem("verifier");
 
@@ -99,6 +105,8 @@ const getSearchParams = (param) => {
   return params.get(param);
 };
 
+// Bron: Spotify Web API — Get Current User's Profile & Playlists
+// https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile
 async function fetchPersonalData(token, path) {
   const result = await fetch("https://api.spotify.com/v1/me" + path, {
     headers: { Authorization: `Bearer ${token}` },

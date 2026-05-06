@@ -153,11 +153,20 @@ Volgende week ga ik die bugs in Render fixen
 
 ## Bronnen
 
-- [Spotify Web API — Authorization Code + PKCE Flow](https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow)
-- [Spotify Web API — Playlists & Tracks](https://developer.spotify.com/documentation/web-api/)
-- [Spotify Web Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk/)
-- [Pointer Events API — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events)
-- [Web Animations API — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API)
+### Spotify
+
+- [Spotify Web API — Authorization Code + PKCE Flow](https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow) — gebruikt in `script.js` voor de volledige OAuth login flow
+- [Spotify Web API — Token endpoint](https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow#request-an-access-token) — gebruikt in `script.js` om een access token op te halen na login
+- [Spotify Web API — Get Current User's Profile](https://developer.spotify.com/documentation/web-api/reference/get-current-users-profile) — gebruikt in `script.js` om de ingelogde gebruiker op te halen
+- [Spotify Web API — Get Playlist Items](https://developer.spotify.com/documentation/web-api/reference/get-playlists-tracks) — gebruikt in `tracks.js` om de nummers van een playlist op te halen
+- [Spotify Web API — Update Playlist Items (deprecated PUT)](https://developer.spotify.com/documentation/web-api/reference/reorder-or-replace-playlists-tracks) — gebruikt in `tracks.js` om de playlist op te slaan na het swipen (deprecated endpoint, maar werkt nog wel)
+- [Spotify Web Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk/) — gebruikt in `tracks.js` om tracks af te spelen in de browser
+
+### Web API's
+
+- [Pointer Events API — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events) — gebruikt in `tracks.js` voor de swipe-interactie met muis, touch en stylus
+- [Web Animations API — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) — gebruikt in `tracks.js` voor de swipe-animaties via `element.animate()`
+- [Web Crypto API — SubtleCrypto.digest() — MDN](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest) — gebruikt in `script.js` voor de SHA-256 hashing bij het aanmaken van de PKCE code challenge
 
 Commits door Claude->
 Ik heb tijdens dit project soms Claude gebruikt, vooral in de vakantie omdat ik dan alleen werkte. Ook had ik op een gegeven moment problemen met Render en heb ik Claude gebruikt om dat te fixen via commits.
