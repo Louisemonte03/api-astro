@@ -158,3 +158,6 @@ Volgende week ga ik die bugs in Render fixen
 - [Spotify Web Playback SDK](https://developer.spotify.com/documentation/web-playback-sdk/)
 - [Pointer Events API — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events)
 - [Web Animations API — MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API)
+
+Commits door Claude->
+Ik heb tijdens dit project soms Claude gebruikt, vooral in de vakantie omdat ik dan alleen werkte. Ook had ik op een gegeven moment problemen met Render en heb ik Claude gebruikt om dat te fixen via commits.
